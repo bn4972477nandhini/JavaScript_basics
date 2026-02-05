@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <!-- <style>
+        .one{
+            background-color: aliceblue;
+        }
+
+    </style> -->
+<body>
+    
+</body>
+
+<h1>Chocolates</h1>
+<div id="container"></div>
+<p id="demo"></p>
+
+<script>
+    const chocolates =[{
+        name:"Dairymilk",
+        images:"https://cococart.in/cdn/shop/files/1CH2570.png?v=1728473482&width=990",
+        price:120,
+        rating:8.6,
+        
+    },
+    {
+        name:"Gems",
+        images:"https://m.media-amazon.com/images/I/611WqJFZa3L._SX679_PIbundle-84,TopRight,0,0_AA679SH20_.jpg",
+        price:120,
+        rating:8.6,
+        
+    },
+    {
+        name:"perk",
+        images:"https://cdn.giftstoindia24x7.com/ASP_Img/IMG2000/GTI442640.jpg",
+        price:120,
+        rating:8.6,
+       
+    
+    },
+    {
+        name:"kitkat",
+        images:"https://www.glamshow.co.in/cdn/shop/products/ANewDesign-MadewithPosterMyWall_89.jpg?v=1677914474",
+        price:120,
+        rating:8.6,
+       
+    
+    },
+    {
+        name:"Chocos",
+        images:"https://images.apollo247.in/pub/media/catalog/product/K/E/KEL0003_1-AUG23_1.jpg?tr=q-80,f-webp,w-400,dpr-3,c-at_max%20400w",
+        price:120,
+        rating:8.6,
+        
+    
+    },
+
+];
+const main = document.getElementById("container")
+const choco = document.getElementById("demo")
+console.log(choco)
+chocolates.forEach(myFunction);
+
+function myFunction(card){
+
+    const x=document.createElement("div")
+    // x.className="one"
+
+    const name = document.createElement("h3")
+    name.innerHTML = card.name
+
+    const photo = document.createElement("img")
+    photo.src=card.images
+
+    const rs = document.createElement("div")
+    rs.innerHTML = card.price
+
+    const ret = document.createElement("div")
+    ret.innerHTML = card.rating
+
+    const but = document.createElement("button")
+    but.innerHTML = "Click here"
+    // but.style.border
+
+    x.appendChild(name)
+    x.appendChild(photo)
+    x.appendChild(rs)
+    x.appendChild(ret)
+    x.appendChild(but)
+
+    
+    choco.appendChild(x)
+    choco.style.display="flex"
+    choco.style.flexWrap="wrap"
+    choco.style.gap="9px"
+
+    // photo.style.height="500"
+    // photo.style.width="350"
+
+
+
+
+}
+
+</script>
+</html>

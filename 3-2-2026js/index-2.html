@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<style>
+    #demo{
+       display: flex;
+       flex-wrap: wrap;
+       gap: 150px;
+       /* justify-content: center; */
+       margin-left: 180px;
+    }
+    .line{
+        display: flex;
+        justify-content: space-between;
+    }
+    .card{
+        height: 680px;
+        width: 300px;
+        border: 1px solid black;
+
+    }
+    .card img{
+        height: 400px;
+        width:300px;
+        gap: 50px;
+    }
+    h1{
+    text-align: center;
+    }
+    line p{
+        display: flex;
+        align-items: center;
+    }
+   
+</style>
+<html>
+  <body>    
+    <h1>My List of Books</h1>
+   
+
+    <p id="demo"></p>
+
+    <script>
+      const books = [{
+          name: "Charlotte's web",
+          poster:
+            "https://cdn.britannica.com/64/103064-050-295C6879/Charlottes-Web-EB-Garth-Williams.jpg",
+          rating: 8.8,
+          summary:
+            "The novel tells the story of a livestock pig named Wilbur and his friendship with a barn spider named Charlotte. When Wilbur is in danger of being slaughtered by the farmer, Charlotte writes messages praising Wilbur in her web in order to persuade the farmer to let him live.",
+        },
+        {
+          name: "Attitude is everything",
+          poster:
+            "https://miro.medium.com/max/1400/1*ItFOYfi8Dyy0yj9n1SE8uQ.jpeg",
+          rating: 8.1,
+          summary:
+            "Attitude, In psychology, a mental position with regard to a fact or state. Attitudes reflect a tendency to classify objects and events and to react to them with some consistency. Attitudes are not directly observable but rather are inferred from the objective, evaluative responses a person makes.",
+        },
+        {
+          name: "The Secret",
+          poster: "https://m.media-amazon.com/images/I/81fdQIY6ykL.jpg",
+          summary:
+            "There's no secret to The Secret. The book and movie simply state that your thoughts control the universe. Through this “law of attraction” you “manifest” your desires. “It is exactly like placing an order from a catalogue",
+          rating: 8.8,
+        },
+        {
+          name: "Discover Your Destiny",
+          rating: 6,
+          summary:
+            "'Discover Your Destiny' is a story about enlightenment of Dar Sanderson, who is an incredibly ambitious executive. The book throws light on the fact that 'happiness and harmony can never be achieved and assured by SUCCESS'. Dar is an achiever in almost every aspect of life, yet he is void from the inside.",
+          poster: "https://m.media-amazon.com/images/I/61t18yWH5qL.jpg",
+        },
+        {
+          name: "The 5 AM Club",
+          poster: "https://m.media-amazon.com/images/I/71zytzrg6lL.jpg",
+          rating: 8.6,
+          summary:
+            "In The 5 AM Club: Own Your Morning. Elevate Your Life, he uses a fictitious story about a billionaire mentor teaching a struggling artist and an entrepreneur about the importance of waking up early to show how revolutionary it is for success.",
+        },
+        {
+          name: "Atomic Habits",
+          poster: "https://m.media-amazon.com/images/I/91bYsX41DVL.jpg",
+          rating: 8,
+          summary:
+            "Atomic Habits is the definitive guide to breaking bad behaviors and adopting good ones in four steps, showing you how small, incremental, everyday routines compound into massive, positive change over time.",
+        },
+        {
+          name: "I Can Do It",
+          poster:
+            "https://images-na.ssl-images-amazon.com/images/I/81T3L1yTJwL.jpg",
+          rating: 8,
+          summary:
+            "Hay shows you that you “can do it”—that is, change and improve virtually every aspect of your life—by understanding and using affirmations correctly. Louise explains that every thought you think and every word you speak is an affirmation. Even your self-talk, your internal dialogue, is a stream of affirmations.",
+        },
+        ];
+       
+        const x = document.getElementById("demo")
+        console.log(x)
+         books.forEach(myFunction);
+
+       function myFunction(item) {
+        const y=document.createElement("div")
+
+        const images=document.createElement("img")
+        images.src=item.poster
+      
+        const name = document.createElement("h2")
+        name.innerText = item.name
+    
+        const rating = document.createElement("p")
+        rating.innerText = item.rating
+        
+      
+        const summary = document.createElement("p")
+        summary.innerText = item.summary
+
+        const nameLine = document.createElement("div")
+        nameLine.appendChild(name)
+        nameLine.appendChild(rating)
+        nameLine.classList.add("line")
+       
+     
+        y.appendChild(images)
+        y.appendChild(nameLine) 
+        y.appendChild(summary)
+
+       y.classList.add("card")
+       x.appendChild(y)
+
+        
+           
+      }
+        
+    </script>
+  </body>
+</html>
