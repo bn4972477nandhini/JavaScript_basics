@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body h1 {
+      text-align: center;
+    }
+    #searchInput {
+      margin-left: 700px;
+      border-radius: 5px;
+      padding: 8px;
+       border: 2px solid slategrey;
+    }
+    #btn {
+      background-color: lightskyblue;
+      border-radius: 8px;
+      padding: 8px;
+      border: 2px solid slategrey;
+    }
+    .mytable {
+      margin-left: 230px;
+      margin-top: 100px;
+      width: 1000px;
+      padding: 20px;
+      border: 1px solid rgb(207, 205, 205);
+      /* box-shadow: ; */
+      border-radius: 20px;
+      border-spacing:0;
+
+      
+    }
+    .mythead {
+      background-color: lightskyblue;
+      
+    }
+   
+
+    tr,
+    th {
+      /* border-radius: 5px; */
+      padding: 13px;
+      
+    }
+   
+   
+    
+  </style>
+  <body>
+    <h1>Employee Directory</h1>
+    <input type="search" id="searchInput" placeholder="Find names" />
+    <button type="button" id="btn">Search</button>
+    <p id="count"></p>
+    <table class="mytable">
+      <thead class="mythead" >
+        <tr class="mytr">
+          <th>Name</th>
+          <th>Role</th>
+          <th>City</th>
+        </tr>
+      </thead>
+
+      <tbody id="tablebody"></tbody>
+    </table>
+    <script>
+      const employees = [
+        { name: "Zoya", role: "UI Designer", city: "Mumbai" },
+        { name: "Aarush", role: "Frontend Developer", city: "Pune" },
+        { name: "Myra", role: "QA Engineer", city: "Bangalore" },
+        { name: "Vivaan", role: "Backend Developer", city: "Hyderabad" },
+        { name: "Tara", role: "HR Manager", city: "Chennai" },
+        { name: "Neil", role: "Full Stack Developer", city: "Delhi" },
+        { name: "Kiara", role: "Product Manager", city: "Kolkata" },
+        { name: "Dhruv", role: "DevOps Engineer", city: "Ahmedabad" },
+        { name: "Anaya", role: "Software Tester", city: "Jaipur" },
+        { name: "Rishabh", role: "Mobile Developer", city: "Indore" },
+      ];
+      const x = document.getElementById("tablebody");
+
+      function display(employees) {
+        x.innerHTML = "";
+        employees.forEach(myFunction);
+
+        function myFunction(item) {
+          const y = document.createElement("tr");
+
+          const names = document.createElement("td");
+          names.innerText = item.name;
+
+          const roles = document.createElement("td");
+          roles.innerText = item.role;
+
+          const cities = document.createElement("td");
+          cities.innerText = item.city;
+
+          y.appendChild(names);
+          y.appendChild(roles);
+          y.appendChild(cities);
+
+          x.appendChild(y);
+          x.style.textAlign = "center";
+          names.style.padding = "10px";
+          roles.style.padding = "1opx";
+          cities.style.padding = "10px";
+
+          x.style.padding="13px"
+
+        
+        }
+        console.log(x);
+      }
+      display(employees);
+      const btn = document.getElementById("btn");
+      btn.addEventListener("click", filterProducts);
+      function filterProducts() {
+        const key = document.getElementById("searchInput").value;
+        console.log(key);
+        const filteredArr = employees.filter(myFunction);
+        function myFunction(item) {
+          if (item.name.toLowerCase().includes(key.toLowerCase())) {
+            return item;
+          }
+        }
+        console.log(filteredArr);
+        display(filteredArr);
+        if (filteredArr.length === 0) {
+          const noresult = document.createElement("div");
+          noresult.innerText = "No result found";
+          x.appendChild(noresult);
+        }
+      }
+    </script>
+  </body>
+</html>

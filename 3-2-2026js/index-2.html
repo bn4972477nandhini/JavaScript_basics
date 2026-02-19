@@ -1,45 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <style>
-    #demo{
-       display: flex;
-       flex-wrap: wrap;
-       gap: 150px;
-       /* justify-content: center; */
-       margin-left: 180px;
-    }
-    .line{
-        display: flex;
-        justify-content: space-between;
-    }
-    .card{
-        height: 680px;
-        width: 300px;
-        border: 1px solid black;
-
-    }
-    .card img{
-        height: 400px;
-        width:300px;
-        gap: 50px;
-    }
-    h1{
+  #demo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 150px;
+    /* justify-content: center; */
+    margin-left: 180px;
+  }
+  .line {
+    display: flex;
+    justify-content: space-between;
+  }
+  .card {
+    height: 680px;
+    width: 300px;
+    border: 1px solid black;
+  }
+  .card img {
+    height: 400px;
+    width: 300px;
+    gap: 50px;
+  }
+  h1 {
     text-align: center;
-    }
-    line p{
-        display: flex;
-        align-items: center;
-    }
-   
+  }
+  line p {
+    display: flex;
+    align-items: center;
+  }
 </style>
 <html>
-  <body>    
+  <body>
     <h1>My List of Books</h1>
-   
+
+    <input type="search" id="searchInput" placeholder="Search books" />
+    <button type="button" id="btnId">Search </button>
 
     <p id="demo"></p>
 
     <script>
-      const books = [{
+      const books = [
+        {
           name: "Charlotte's web",
           poster:
             "https://cdn.britannica.com/64/103064-050-295C6879/Charlottes-Web-EB-Garth-Williams.jpg",
@@ -91,45 +92,82 @@
           summary:
             "Hay shows you that you “can do it”—that is, change and improve virtually every aspect of your life—by understanding and using affirmations correctly. Louise explains that every thought you think and every word you speak is an affirmation. Even your self-talk, your internal dialogue, is a stream of affirmations.",
         },
-        ];
-       
-        const x = document.getElementById("demo")
-        console.log(x)
-         books.forEach(myFunction);
+      ];
 
-       function myFunction(item) {
-        const y=document.createElement("div")
+      const x = document.getElementById("demo");
 
-        const images=document.createElement("img")
-        images.src=item.poster
-      
-        const name = document.createElement("h2")
-        name.innerText = item.name
-    
-        const rating = document.createElement("p")
-        rating.innerText = item.rating
-        
-      
-        const summary = document.createElement("p")
-        summary.innerText = item.summary
+      function display(books) {
+        x.innerHTML = "";
+        books.forEach(myFunction);
 
-        const nameLine = document.createElement("div")
-        nameLine.appendChild(name)
-        nameLine.appendChild(rating)
-        nameLine.classList.add("line")
-       
-     
-        y.appendChild(images)
-        y.appendChild(nameLine) 
-        y.appendChild(summary)
+        function myFunction(item) {
+          const y = document.createElement("div");
 
-       y.classList.add("card")
-       x.appendChild(y)
+          //Antor method//
 
-        
-           
+          /*
+          y.innerHTML=`
+          <img src="${item.poster}/>"
+          <div class="line">
+            <h6>${item.name}<h6>
+              <div>${item.rating}</div>
+          </div>    
+
+          `
+          */
+
+          const images = document.createElement("img");
+          images.src = item.poster;
+
+          const name = document.createElement("h2");
+          name.innerText = item.name;
+
+          const rating = document.createElement("p");
+          rating.innerText = item.rating;
+
+          const summary = document.createElement("p");
+          summary.innerText = item.summary;
+
+          const nameLine = document.createElement("div");
+          nameLine.appendChild(name);
+          nameLine.appendChild(rating);
+          nameLine.classList.add("line");
+
+          y.appendChild(images);
+          y.appendChild(nameLine);
+          y.appendChild(summary);
+
+          y.classList.add("card");
+          x.appendChild(y);
+        }
+        console.log(x);
       }
-        
+      display(books);
+      const btn = document.getElementById("btnId");
+      btn.addEventListener("click", filterProducts);
+      function filterProducts() {
+        const key = document.getElementById("searchInput").value;
+        console.log(key);
+        const filteredArr = books.filter(myFunction);
+        function myFunction(item) {
+          if (item.name.toLowerCase().includes(key.toLowerCase())) {
+            return item;
+          }
+        }
+
+        console.log(filteredArr);
+        display(filteredArr);
+        if(filteredArr.length === 0){
+        const noresult=document.createElement("div")
+         noresult.innerText="No result found"
+        x.appendChild(noresult)
+     }
+
+        btn.style.marginLeft="500px"
+      }
     </script>
   </body>
 </html>
+
+
+

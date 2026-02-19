@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+</head>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th,td { 
+        padding: 10px;
+        border: 1px solid white;
+        text-align: left;
+    }
+    button{
+        margin-left: 10px;
+    }
+</style>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="cart-items"></tbody>
+    </table>
+    <h2 id="total-price">Total Price: $0</h2>
+    <script>
+        const carItems =[
+            {name:"Movie 1",price: 10, quantity: 2},
+            {name:"Movie 1",price: 80, quantity: 1},
+            {name:"Movie 1",price: 20, quantity: 8},
+            {name:"Movie 1",price: 30, quantity: 9}
+        ];
+
+        function calculateCart() {
+            const cartTable = document.getElementById('cart-items');
+            cartTable.innerHTML = '';//clear existing items
+            let  totalPrice = 0;
+
+            cartItems.forEach((item,index) =>{
+                const itemTotal = item.price * item.quantity;
+                totalPrice = totalPrice + itemTotal;
+
+                const row = document.createElement('tr');
+                row.innerHTml = `
+                <td>${item.name}</td>
+                <td>${item.price}</td>
+                <td>${item.quantity}</td>
+                <td>${itemTotal}</td>
+                <td> 
+                    <button onclick="updateQuantity(${index}, 1)"> Add </button> 
+                    <button onclick="updateQuantity(${index}, -1)"> Remove </button>
+                </td>
+                `;
+                cartTable.appendChild(row);
+            });
+            document.getElementById('total-price').innerText =`Total price:$${totalPrice}`;   
+        }
+        function updateQuantity(index,change){
+            cartItems[index].quantity = cartItems[index].quantity + change;
+            if(cartItems[index].quantity < 0){
+               cartItems[index].quantity = 0; // prevent negative quantity
+            }
+            if (cartItems[index].quantity === 0){
+                cartItems.splice(index,1); // Remove item if quantity is 0
+            }
+            calculateCart();
+        }
+        calculateCart();
+    </script>
+    
+
+</body>
+</html>

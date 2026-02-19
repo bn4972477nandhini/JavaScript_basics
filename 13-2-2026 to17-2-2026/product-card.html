@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    #demo{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 50px;
+        text-align: center;
+        margin: 90px ;
+
+    }
+    
+    .card{
+        width: 300px;
+        box-shadow: 0 4px 10px rgba(12, 12, 12, 0.08);
+        transition: 0.3s ease;
+        
+
+    }
+    .ret{
+        color:green;
+    }
+    .card:hover{
+       transform: translateY(-5px);
+       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); 
+    }
+
+  </style>
+  <body>
+    <p id="demo"></p>
+    <script>
+      fetch('https://fakestoreapi.com/products')
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          function display(products) {
+            data.forEach(myFunction);
+            function myFunction(item) {
+              const x = document.getElementById("demo");
+              const y = document.createElement("div");
+              y.innerHTML = `
+                            <img src="${item.image}"style="width:100px; height:150px;" >
+                            <h3 class="title">${item.title}</h3>
+                            <p><strong>Price:</strong>${item.price}</p>`;
+
+
+                            //Redirect to products page with ID
+
+                            console.log(window.location.href)
+                            y.addEventListener("click", () =>{
+                          window.location.href= `products.html?id=${item.id}`;
+
+                            });
+                            
+
+              y.classList.add("card");
+              x.appendChild(y);
+            }
+            console.log(x);
+          }
+          display(data);
+        })
+      .catch((error) => console.log(error));
+    </script>
+  </body>
+</html>

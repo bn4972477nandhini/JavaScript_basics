@@ -1,0 +1,188 @@
+<!doctype html>
+<style>
+    body{
+        background-color: rgb(68, 165, 221);
+        font-family: Arial, Helvetica, sans-serif;
+        
+    }
+    .card{
+        /* border: 2px solid rgb(113, 111, 111); */
+        height: auto;
+        width: 300px;
+        border-radius: 10px;
+        background-color: white;
+        padding: 20px;
+        color: rgb(215, 11, 89);
+        box-shadow: 0 4px 10px rgba(0, 0, 0,0.08);
+        transition: 0.3s ease;
+        
+    }
+    .card:hover{
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.19);
+    }
+    #searchInput{
+        margin-left: 650px;
+        padding: 20px;
+        border-radius: 30px;
+        border:2px solid rgb(165, 165, 165);
+        margin-top: 40px;
+        width: 350px;
+        text-align: center;
+        font-size: 17px;
+        box-shadow: 7px 4px 10px rgba(124, 123, 123, 0.08);
+        /* transition: 0.3s ease; */
+    }
+    #btnId{
+        padding: 21px;
+        width: 150px;
+        text-align: center;
+        font-size: 16px;
+        border-radius: 30px;
+        border:2px solid rgb(134, 134, 134);
+        /* background-color:lightskyblue; */
+       
+    }
+</style>
+<html>
+  <body>
+    <input type="search" id="searchInput" placeholder="Search in Location" />
+    <button type="button" id="btnId">Search</button>
+    <p id="demo"></p>
+    <script>
+        const donate = [
+          {
+            DonorName: "Pavithra",
+            EmailAddress: "pavipachapa28@gmail.com",
+            Age: "20",
+            Month: "2",
+            Phone: "8438056679",
+            Location: "chennai,perugudi",
+            Availability: "I donate later",
+            message:
+              "hi, i am breast milk donate later because i am going go my personal work but defenetlly i will gave milk",
+          },
+          {
+            DonorName: "Ramya",
+            EmailAddress: "ramyagovinth799@gmail.com",
+            Age: 24,
+            Month: 4,
+            Phone: 8438045667,
+            Location: "chennai,palavakam",
+            Availability: "I donate later",
+            message:
+              " hi, i am breast milk donate later because i am going go my personal work but defenetlly i will gave milk",
+          },
+          {
+            DonorName: "Nithya",
+            EmailAddress: "nithyamoorthi345@gmail.com",
+            Age: 25,
+            Month: 6,
+            Phone: 8438056690,
+            Location: "chennai,velachery",
+            Availability: "I donate later",
+            message:
+              " hi, i am breast milk donate later because i am going go my personal work but defenetlly i will gave milk",
+          },
+          {
+            DonorName: "Logo",
+            EmailAddress: "logomoorthi397@gmail.com",
+            Age: 20,
+            Month: 2,
+            Phone: 1234567898,
+            Location: "chennai,kk Nagar",
+            Availability: "I donate later",
+            message:
+              " hi, i am breast milk donate later because i am going go my personal work but defenetlly i will gave milk",
+          },
+          {
+            DonorName: "Nandhini",
+            EmailAddress: "nandhinibabu211@gmail.com",
+            Age: 20,
+            Month: 2,
+            Phone: 8438056679,
+            Location: "chennai,Kelabakkam",
+            Availability: "I donate later",
+            message:
+              " hi, i am breast milk donate later because i am going go my personal work but defenetlly i will gave milk",
+          },
+          {
+            DonorName: "Yogamithre",
+            EmailAddress: "yogamithre28@gmail.com",
+            Age: 20,
+            Month: 2,
+            Phone: 8438056679,
+            Location: "chennai,gundy",
+            Availability: "I donate later",
+            message:
+              " hi, i am breast milk donate later because i am going go my personal work but defenetlly i will gave milk",
+          },
+        ];
+        const x = document.getElementById("demo");
+
+        function display(donate) {
+          x.innerHTML = "";
+          donate.forEach(myFunction);
+          function myFunction(item) 
+          {
+
+            const y = document.createElement("div");
+            y.innerHTML=`<p><strong>DonorName:</strong>${item.DonorName}</p>
+            <p><strong>Email:</strong>${item.EmailAddress}</p>
+            <p><strong>Age:</strong>${item.Age}</p>
+            <p><strong>Baby Month:</strong>${item.Month}</p>
+            <p><strong>Phone:</strong>${item.Phone}</p>
+            <p><strong>Location</strong>${item.Location}</p>
+            <p><strong>Availability</strong>${item.Availability}</p>
+            <p><strong>Message:</strong>${item.message}</p>`
+
+             y.classList.add("card");
+             x.appendChild(y);
+
+            
+
+            
+
+           
+            //card//
+            x.style.display="flex"
+            x.style.flexDirection="row"
+            x.style.flexWrap="wrap"
+            x.style.gap="70px"
+            x.style.marginLeft="40px"
+            x.style.marginTop="50px"
+            // x.style.textAlign="center"
+
+            
+          }
+          console.log(x);
+          
+        }
+
+        display(donate);
+        const btn = document.getElementById("btnId");
+          btn.addEventListener("click", filterProducts);
+          function filterProducts() {
+            const key = document.getElementById("searchInput").value;
+            console.log(key);
+            const filteredArr = donate.filter(myFunction);
+            function myFunction(item) {
+              if (item.Location.toLowerCase().includes(key.toLowerCase())) {
+                return item;
+              }
+            }
+
+
+            console.log(filteredArr);
+            display(filteredArr);
+            
+            if (filteredArr.length === 0) {
+            const noresult = document.createElement("div");
+            noresult.innerText = "No result found";
+            x.appendChild(noresult);
+        }
+           
+        }
+    </script>
+  </body>
+</html>

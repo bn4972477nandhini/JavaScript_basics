@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .products-details{
+        /* background-color: pink; */
+        width: 900px;
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0,0.08);
+        margin:90px auto;
+        padding: 50px;
+    
+    }
+    #image{
+        width: 400px;
+        height: 350px;
+    }
+    #price{
+        color: rgb(155, 212, 68);
+        font-weight: bold;
+    }
+    #btn{
+        /* border: 2px solid; */
+        border-radius: 20px;
+        padding: 6px;
+        text-decoration: none;
+        background-color: bisque;
+        color: black;
+        margin :5px;
+       
+    }
+   
+   
+</style>
+<body>
+    
+</body>
+<div class="products-details">
+    <img id="image">
+    <div class="details">
+        <h1 id="title"></h1>
+        <p id="price" class="price"></p>
+        <p id="description"></p>
+        <a  id="btn" href="product-card.html"> Go Back </a>
+
+    </div>
+</div>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    console.log(window.location.search);
+
+    const productId = params.get("id");
+    console.log(productId)
+
+    //Fetch single product
+    fetch(`https://fakestoreapi.com/products/${productId}`)
+    .then(res => res.json())
+    .then(product => {
+        document.getElementById("title").textContent = product.title;
+        document.getElementById("image") .src = product.image;
+        document.getElementById("price") .textContent = "$"+product.price;
+        document.getElementById("description") .textContent = product.description ;
+       
+    })
+</script>
+</html>

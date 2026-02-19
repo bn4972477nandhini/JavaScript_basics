@@ -1,58 +1,59 @@
 <!DOCTYPE html>
+
 <html>
-    <!-- <style>
-        .one{
-            background-color: aliceblue;
-        }
-
-    </style> -->
 <body>
+ 
+<h1 style="margin-left: 700px;">Chocolates Shop</h1>
+<div id="container">
     
-</body>
-
-<h1>Chocolates</h1>
-<div id="container"></div>
+</div>
 <p id="demo"></p>
 
 <script>
     const chocolates =[{
+        
+        images:"https://assets.oyegifts.com/flowers-n-gifts/vendordata/product/yuvan-155.jpg",
+        price:"RS120",
         name:"Dairymilk",
-        images:"https://cococart.in/cdn/shop/files/1CH2570.png?v=1728473482&width=990",
-        price:120,
-        rating:8.6,
+        
         
     },
     {
-        name:"Gems",
-        images:"https://m.media-amazon.com/images/I/611WqJFZa3L._SX679_PIbundle-84,TopRight,0,0_AA679SH20_.jpg",
-        price:120,
-        rating:8.6,
+       
+        images:"https://rukminim2.flixcart.com/image/480/640/xif0q/chocolate/n/t/j/2-gems-chocolate-silk-fur-nut-2-cadbury-original-imahcu2sudhyfcgy.jpeg?q=90",
+        price:"RS50",
+         name:"Gems",
+        
         
     },
     {
+       
+        images:"https://m.media-amazon.com/images/I/61mwz3xh4KL.jpg",
+        price:"RS20",
         name:"perk",
-        images:"https://cdn.giftstoindia24x7.com/ASP_Img/IMG2000/GTI442640.jpg",
-        price:120,
-        rating:8.6,
        
     
     },
     {
-        name:"kitkat",
-        images:"https://www.glamshow.co.in/cdn/shop/products/ANewDesign-MadewithPosterMyWall_89.jpg?v=1677914474",
-        price:120,
-        rating:8.6,
-       
-    
-    },
-    {
-        name:"Chocos",
-        images:"https://images.apollo247.in/pub/media/catalog/product/K/E/KEL0003_1-AUG23_1.jpg?tr=q-80,f-webp,w-400,dpr-3,c-at_max%20400w",
-        price:120,
-        rating:8.6,
         
+        images:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdkGAsi5XIS08hbHrqY1UZox_YvBO4_xdshw&s",
+        price:"RS120",
+        name:"kitkat",
     
     },
+    {
+        
+        images:"https://www.panchamrutha.com/cdn/shop/files/kellogg-s-multigrain-chocos-385-g-product-images-o490005266-p490005266-5-202505222310.webp?v=1755508269&width=420",
+        price:"RS120",
+        name:"Chocos",
+        
+    },
+    {
+        
+        images:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR0cPPOZj6qeU3D7ZwsUq3ehWZCE0rhH7deA&s",
+        price:"RS30",
+        name:"milkybar",
+    }
 
 ];
 const main = document.getElementById("container")
@@ -63,43 +64,66 @@ chocolates.forEach(myFunction);
 function myFunction(card){
 
     const x=document.createElement("div")
-    // x.className="one"
+    
 
-    const name = document.createElement("h3")
-    name.innerHTML = card.name
 
     const photo = document.createElement("img")
     photo.src=card.images
 
-    const rs = document.createElement("div")
-    rs.innerHTML = card.price
+    
+    const name = document.createElement("h1")
+    name.innerText = card.name
 
-    const ret = document.createElement("div")
-    ret.innerHTML = card.rating
+    const rs = document.createElement("h2")
+    rs.innerText = card.price
+
+    // const ret = document.createElement("div")
+    // ret.innerText = card.rating
 
     const but = document.createElement("button")
-    but.innerHTML = "Click here"
-    // but.style.border
-
-    x.appendChild(name)
+    but.innerText="Buy"
+    
+    
+   
     x.appendChild(photo)
+     x.appendChild(name)
     x.appendChild(rs)
-    x.appendChild(ret)
+    // x.appendChild(ret)
     x.appendChild(but)
 
-    
+    x.style.textAlign="center"
     choco.appendChild(x)
     choco.style.display="flex"
     choco.style.flexWrap="wrap"
-    choco.style.gap="9px"
+    choco.style.gap="100px"
 
-    // photo.style.height="500"
-    // photo.style.width="350"
+    x.style.display="flex"
+    x.style.flexDirection="column"
+    x.style.width="350px"
+//button//
+    but.style.width="80px"
+    but.style.marginLeft="140px"
+    but.style.borderRadius="20px"
+    but.style.fontSize="18px"
+    but.style.backgroundColor="pink"
+    but.style.border="1px solid white"
 
+    photo.style.borderRadius="20px"
+    photo.style.height="350px"
+    photo.style.width="350px"
+    
+    x.style.border="1px solid white"
+    // x.style.borderRadius="20px"
+    x.style.height="550px"
 
+    main.style.display="gird"
+    main.style.gridTemplateColumns="repeat(3,1fr)"
+    main.style.height="50px"
 
-
+    
+    choco.style.marginLeft="190px"
 }
 
 </script>
+</body>
 </html>
